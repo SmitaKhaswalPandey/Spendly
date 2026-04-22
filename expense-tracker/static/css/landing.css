@@ -177,6 +177,77 @@
 }
 
 /* ------------------------------------------------------------------ */
+/* How-it-works modal                                                  */
+/* ------------------------------------------------------------------ */
+
+.lp-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.lp-modal.is-open {
+    display: flex;
+}
+
+.lp-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+}
+
+.lp-modal-box {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 820px;
+    background: #000;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.lp-modal-close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.55);
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.25rem 0.6rem 0.3rem;
+    border-radius: var(--radius-sm);
+    opacity: 0.85;
+    transition: opacity 0.15s, background 0.15s;
+}
+
+.lp-modal-close:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.lp-modal-video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
+
+.lp-modal-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* ------------------------------------------------------------------ */
 /* Responsive                                                          */
 /* ------------------------------------------------------------------ */
 

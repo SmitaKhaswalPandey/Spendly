@@ -25,7 +25,7 @@
 
         <div class="lp-ctas">
             <a href="{{ url_for('register') }}" class="lp-btn">Create free account</a>
-            <a href="#" class="lp-btn">See how it works</a>
+            <a href="#" class="lp-btn" id="how-it-works-btn">See how it works</a>
         </div>
 
         <div class="lp-dashboard">
@@ -106,4 +106,63 @@
     </div>
 </section>
 
+<!-- How it works modal -->
+<div id="how-it-works-modal" class="lp-modal" aria-hidden="true">
+    <div class="lp-modal-overlay"></div>
+    <div class="lp-modal-box">
+        <button class="lp-modal-close" aria-label="Close">&times;</button>
+        <div class="lp-modal-video">
+            <iframe
+                id="how-it-works-iframe"
+                src=""
+                data-src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1"
+                title="How Spendly works"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    (function () {
+        var modal    = document.getElementById('how-it-works-modal');
+        var iframe   = document.getElementById('how-it-works-iframe');
+        var openBtn  = document.getElementById('how-it-works-btn');
+        var closeBtn = modal.querySelector('.lp-modal-close');
+        var overlay  = modal.querySelector('.lp-modal-overlay');
+
+        function openModal() {
+            iframe.src = iframe.dataset.src;
+            modal.setAttribute('aria-hidden', 'false');
+            modal.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            iframe.src = '';
+            modal.setAttribute('aria-hidden', 'true');
+            modal.classList.remove('is-open');
+            document.body.style.overflow = '';
+        }
+
+        openBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            openModal();
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', closeModal);
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+                closeModal();
+            }
+        });
+    })();
+</script>
 {% endblock %}
